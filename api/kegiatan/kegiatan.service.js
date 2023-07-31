@@ -70,7 +70,7 @@ module.exports = {
 
     getKegiatanById: (kegiatanId, callBack) => {
         pool.query(
-          'SELECT * FROM Kegiatan LEFT JOIN dokumentasi_kegiatan ON kegiatan.id = dokumentasi_kegiatan.id_kegiatan WHERE kegiatan.id = ?',
+          'SELECT * FROM Kegiatan LEFT JOIN dokumentasi_kegiatan ON Kegiatan.id = dokumentasi_kegiatan.id_kegiatan WHERE Kegiatan.id = ?',
           [kegiatanId],
           (error, results, fields) => {
             if (error) {
