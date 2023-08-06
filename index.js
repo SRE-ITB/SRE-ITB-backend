@@ -10,8 +10,8 @@ app.use(express.json());
 // Enable CORS for all routes
 app.use(cors());
 
-app.use("/api/users", userRouter);
-app.use("/api/kegiatan", kegiatanRouter);
+app.use("/users", userRouter);
+app.use("/kegiatan", kegiatanRouter);
 
 app.listen(process.env.APP_PORT, () => {
   console.log('Example app listening on port : ', process.env.APP_PORT);
