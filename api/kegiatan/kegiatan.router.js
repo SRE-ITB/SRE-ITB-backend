@@ -4,6 +4,7 @@ const { body, param } = require('express-validator');
 const kegiatanController = require('./kegiatan.controller');
 
 // Rute untuk membuat kegiatan
+router.get('/', kegiatanController.getAllKegiatan);
 
 router.get('/:id',
   [
@@ -14,7 +15,7 @@ router.get('/:id',
 );
 
 router.post(
-  '/create',
+  '/',
   [
     // Validasi input menggunakan express-validator
     body('thumbnail').notEmpty().withMessage('Thumbnail is required'),
@@ -29,7 +30,7 @@ router.post(
 );
 
 // Rute untuk menghapus kegiatan berdasarkan ID
-router.delete('/delete', kegiatanController.deleteKegiatan);
+router.delete('/', kegiatanController.deleteKegiatan);
 
 // Tambahkan rute lain sesuai kebutuhan, seperti rute untuk mendapatkan kegiatan berdasarkan ID atau rute lainnya.
 

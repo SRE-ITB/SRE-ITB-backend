@@ -70,7 +70,7 @@ module.exports = {
 
     getKegiatanById: (kegiatanId, callBack) => {
         pool.query(
-          'SELECT * FROM Kegiatan LEFT JOIN dokumentasi_kegiatan ON Kegiatan.id = dokumentasi_kegiatan.id_kegiatan WHERE Kegiatan.id = ?',
+          'SELECT * FROM kegiatan LEFT JOIN dokumentasi_kegiatan ON kegiatan.id = dokumentasi_kegiatan.id_kegiatan WHERE kegiatan.id = ?',
           [kegiatanId],
           (error, results, fields) => {
             if (error) {
@@ -103,5 +103,32 @@ module.exports = {
             return callBack(null, kegiatanData);
           }
         );
-      }
+      },
+      
+      getAllKegiatan: (callBack) => {
+        pool.query(
+            'SELECT * FROM kegiatan LEFT JOIN dokumentasi_kegiatan ON kegiatan.id = dokumentasi_kegiatan.id_kegiatan',
+            (error, results, fields) => {
+                if (error) {
+                    console.error(error);
+                    return callBack(error);
+                }
+
+                const kegiatanList = [];
+
+                results.forEach((row) => {
+                    kegiatanList.push({
+                        id: row.id,
+                        thumbnail: row.thumbnail,
+                        nama_kegiatan: row.nama_kegiatan,
+                        waktu_pelaksanaan: row.waktu_pelaksanaan,
+                        deskripsi_pendek: row.deskripsi_pendek,
+                        deskripsi_panjang: row.deskripsi_panjang,
+                    });
+                });
+
+                return callBack(null, kegiatanList);
+            }
+        );
+    },
 };
