@@ -5,6 +5,7 @@ module.exports = {
   createKegiatan: (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.error(err);
       return res.status(400).json({
         message: 'Validation error',
         errors: errors.array(),
@@ -29,13 +30,12 @@ module.exports = {
     const data = req.body;
     kegiatanService.deleteKegiatan(data, (err, results) => {
       if (err) {
-        console.log(err);
+        console.error(err);
         return res.status(500).json({
           message: 'Database connection error',
         });
       }
       if (results.affectedRows === 0) {
-        console.log('rep: ', results);
         return res.json({
           message: 'Record not found',
         });
@@ -50,7 +50,7 @@ module.exports = {
     const kegiatanId = req.params.id;
     kegiatanService.getKegiatanById(kegiatanId, (err, results) => {
       if (err) {
-        console.error("TESSTING 2 ", err);
+        console.error(err);
         return res.status(500).json({
           message: 'Database connection error',
           data: null,
