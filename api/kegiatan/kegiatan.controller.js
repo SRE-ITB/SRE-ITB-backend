@@ -89,6 +89,30 @@ module.exports = {
     });
   },
 
+  updateKegiatan: (req, res) => {
+    const kegiatanId = req.params.id;
+    const data = req.body;
+
+    kegiatanService.updateKegiatan(kegiatanId, data, (err, results) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({
+          message: 'Database connection error',
+        });
+      }
+
+      if (results.affectedRows === 0) {
+        return res.json({
+          message: 'Kegiatan not found or no changes were made',
+        });
+      }
+
+      return res.json({
+        message: 'Kegiatan updated successfully',
+      });
+    });
+  },
+
   // Tambahkan fungsi lain sesuai kebutuhan, seperti fungsi untuk mendapatkan kegiatan berdasarkan ID atau fungsi lainnya.
 };
 

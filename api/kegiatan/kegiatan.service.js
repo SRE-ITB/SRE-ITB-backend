@@ -131,4 +131,53 @@ module.exports = {
             }
         );
     },
+
+    updateKegiatan: (kegiatanId, data, callBack) => {
+        pool.getConnection((err, connection) => {
+          if (err) {
+            return callBack(err);
+          }
+    
+          connection.beginTransaction((err) => {
+            if (err) {
+              connection.release();
+              return callBack(err);
+            }
+    
+            const kegiatanData = {
+              thumbnail: data.thumbnail,
+              nama_kegiatan: data.nama_kegiatan,
+              waktu_pelaksanaan: data.waktu_pelaksanaan,
+              deskripsi_pendek: data.deskripsi_pendek,
+              deskripsi_panjang: data.deskripsi_panjang
+            };
+    
+            connection.query(
+              'UPDATE kegiatan SET ? WHERE id = ?',
+              [kegiatanData, kegiatanId],
+              (error, results, fields) => {
+                if (error) {
+                  connection.rollback(() => {
+                    connection.release();
+                    return callBack(error);
+                  });
+                }
+    
+                connection.commit((err) => {
+                  if (err) {
+                    connection.rollback(() => {
+                      connection.release();
+                      return callBack(err);
+                    });
+                  }
+    
+                  connection.release();
+                  return callBack(null, results);
+                });
+              }
+            );
+          });
+        });
+      },
+
 };

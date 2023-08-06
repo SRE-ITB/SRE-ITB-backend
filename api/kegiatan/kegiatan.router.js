@@ -32,6 +32,15 @@ router.post(
 // Rute untuk menghapus kegiatan berdasarkan ID
 router.delete('/', kegiatanController.deleteKegiatan);
 
+// Rute untuk mengubah kegiatan berdasarkan ID
+router.put('/:id',
+  [
+    // Validasi parameter ID menggunakan express-validator
+    param('id').isInt().withMessage('ID must be an integer'),
+  ],
+  kegiatanController.updateKegiatan
+);
+
 // Tambahkan rute lain sesuai kebutuhan, seperti rute untuk mendapatkan kegiatan berdasarkan ID atau rute lainnya.
 
 module.exports = router;
