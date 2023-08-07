@@ -27,8 +27,8 @@ module.exports = {
   },
 
   deleteKegiatan: (req, res) => {
-    const data = req.body;
-    kegiatanService.deleteKegiatan(data, (err, results) => {
+    const id = req.params.id;
+    kegiatanService.deleteKegiatan(id, (err, results) => {
       if (err) {
         console.error(err);
         return res.status(500).json({

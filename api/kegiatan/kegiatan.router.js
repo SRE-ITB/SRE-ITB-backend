@@ -30,7 +30,7 @@ router.post(
 );
 
 // Rute untuk menghapus kegiatan berdasarkan ID
-router.delete('/', kegiatanController.deleteKegiatan);
+router.delete('/:id', kegiatanController.deleteKegiatan);
 
 // Rute untuk mengubah kegiatan berdasarkan ID
 router.put('/:id',

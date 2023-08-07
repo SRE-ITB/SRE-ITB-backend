@@ -84,7 +84,7 @@ module.exports = {
     
             // Membuat objek untuk menyimpan data kegiatan beserta dokumentasi
             const kegiatanData = {
-              id: results[0].id,
+              id: results[0].id_kegiatan,
               thumbnail: results[0].thumbnail,
               nama_kegiatan: results[0].nama_kegiatan,
               waktu_pelaksanaan: results[0].waktu_pelaksanaan,
@@ -107,7 +107,7 @@ module.exports = {
       
       getAllKegiatan: (callBack) => {
         pool.query(
-            'SELECT * FROM kegiatan LEFT JOIN dokumentasi_kegiatan ON kegiatan.id = dokumentasi_kegiatan.id_kegiatan',
+            'SELECT * FROM kegiatan',
             (error, results, fields) => {
                 if (error) {
                     console.error(error);
@@ -144,13 +144,27 @@ module.exports = {
               return callBack(err);
             }
     
-            const kegiatanData = {
-              thumbnail: data.thumbnail,
-              nama_kegiatan: data.nama_kegiatan,
-              waktu_pelaksanaan: data.waktu_pelaksanaan,
-              deskripsi_pendek: data.deskripsi_pendek,
-              deskripsi_panjang: data.deskripsi_panjang
-            };
+            const kegiatanData = {};
+
+            if (data.thumbnail) {
+            kegiatanData.thumbnail = data.thumbnail;
+            }
+
+            if (data.nama_kegiatan) {
+            kegiatanData.nama_kegiatan = data.nama_kegiatan;
+            }
+
+            if (data.waktu_pelaksanaan) {
+            kegiatanData.waktu_pelaksanaan = data.waktu_pelaksanaan;
+            }
+
+            if (data.deskripsi_pendek) {
+            kegiatanData.deskripsi_pendek = data.deskripsi_pendek;
+            }
+
+            if (data.deskripsi_panjang) {
+            kegiatanData.deskripsi_panjang = data.deskripsi_panjang;
+            }
     
             connection.query(
               'UPDATE kegiatan SET ? WHERE id = ?',
@@ -179,5 +193,58 @@ module.exports = {
           });
         });
       },
+    
+    deleteKegiatan: (kegiatanId, callBack) => {
+        pool.getConnection((err, connection) => {
+            if (err) {
+                return callBack(err);
+            }
+
+            connection.beginTransaction((err) => {
+                if (err) {
+                    connection.release();
+                    return callBack(err);
+                }
+
+                connection.query(
+                    'DELETE FROM dokumentasi_kegiatan WHERE id_kegiatan = ?',
+                    [kegiatanId],
+                    (error, results, fields) => {
+                        if (error) {
+                            connection.rollback(() => {
+                                connection.release();
+                                return callBack(error);
+                            });
+                        }
+
+                        connection.query(
+                            'DELETE FROM kegiatan WHERE id = ?',
+                            [kegiatanId],
+                            (error, results, fields) => {
+                                if (error) {
+                                    connection.rollback(() => {
+                                        connection.release();
+                                        return callBack(error);
+                                    });
+                                }
+
+                                connection.commit((err) => {
+                                    if (err) {
+                                        connection.rollback(() => {
+                                            connection.release();
+                                            return callBack(err);
+                                        });
+                                    }
+
+                                    connection.release();
+                                    return callBack(null, results);
+                                });
+                            }
+                        );
+                    }
+                );
+            });
+        });
+    },
 
 };
