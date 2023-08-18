@@ -2,12 +2,18 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors'); // Import the cors package
 const app = express();
-const userRouter = require('./api/users/user.router');
-const kegiatanRouter = require('./api/kegiatan/kegiatan.router');
-const activityRouter = require('./api/activity/activity.router'); // Add this line
+const activityRouter = require('./api/activity/activity.router'); 
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
+const options = require('./docs/swagger.option');
+
+const spacs = swaggerJsDoc(options)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spacs));
+
+
 
 app.use(express.json());
-
 // Enable CORS for all routes
 app.use(cors());
 
