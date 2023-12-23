@@ -121,7 +121,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"thumbnail\": \"https://example.com/new_thumbnail.jpg\",\r\n  \"title\": \"New Title\",\r\n  \"date\": \"2022-12-31T23:59:59.000Z\",\r\n  \"caption\": \"New Caption\",\r\n  \"description\": \"New Description\",\r\n  \"type\": \"New Type\"\r\n}",
+					"raw": "{\r\n  \"thumbnail\": \"https://example.com/new_thumbnail.jpg\",\r\n  \"title\": \"New Title\",\r\n  \"date\": \"2022-12-31T23:59:59.000Z\",\r\n  \"caption\": \"New Caption\",\r\n  \"description\": \"New Description\",\r\n  \"type\": \"learning\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -129,7 +129,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/activity/8",
+					"raw": "localhost:3000/api/activity/1",
 					"host": [
 						"localhost"
 					],
@@ -137,7 +137,7 @@
 					"path": [
 						"api",
 						"activity",
-						"8"
+						"1"
 					]
 				}
 			},
