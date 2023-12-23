@@ -19,6 +19,12 @@ npx prisma init --datasource-provider mysql
 
 ## How to run
 
+0. Seed the database
+
+```bash
+npx prisma db seed
+```
+
 1. Make sure the database is up to date
 
 ```bash
