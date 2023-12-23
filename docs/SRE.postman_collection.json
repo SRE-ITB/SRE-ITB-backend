@@ -31,7 +31,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/activity/8",
+					"raw": "localhost:3000/api/activity/1",
 					"host": [
 						"localhost"
 					],
@@ -39,7 +39,7 @@
 					"path": [
 						"api",
 						"activity",
-						"8"
+						"1"
 					]
 				}
 			},
@@ -51,7 +51,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/activity/type/activity",
+					"raw": "localhost:3000/api/activity/type/internal",
 					"host": [
 						"localhost"
 					],
@@ -60,7 +60,7 @@
 						"api",
 						"activity",
 						"type",
-						"activity"
+						"internal"
 					]
 				}
 			},
@@ -73,7 +73,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"thumbnail\": \"https://example.com/image.jpg\",\r\n  \"title\": \"New Activity\",\r\n  \"date\": \"2022-01-01T00:00:00.000Z\",\r\n  \"caption\": \"A caption for the activity\",\r\n  \"description\": \"Description of the activity\",\r\n  \"type\": \"Type of the activity\",\r\n  \"documentation\": [\r\n    {\r\n      \"title\": \"Documentation 1\",\r\n      \"url\": \"https://example.com/documentation1.pdf\"\r\n    },\r\n    {\r\n      \"title\": \"Documentation 2\",\r\n      \"url\": \"https://example.com/documentation2.pdf\"\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n  \"thumbnail\": \"https://example.com/image.jpg\",\r\n  \"title\": \"New Activity\",\r\n  \"date\": \"2022-01-01T00:00:00.000Z\",\r\n  \"caption\": \"A caption for the activity\",\r\n  \"description\": \"Description of the activity\",\r\n  \"type\": \"internal\",\r\n  \"documentation\": [\r\n    {\r\n      \"title\": \"Documentation 1\",\r\n      \"url\": \"https://example.com/documentation1.pdf\"\r\n    },\r\n    {\r\n      \"title\": \"Documentation 2\",\r\n      \"url\": \"https://example.com/documentation2.pdf\"\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
