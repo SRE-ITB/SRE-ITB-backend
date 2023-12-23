@@ -14,8 +14,15 @@ model Activity {
   date          DateTime
   caption       String
   description   String
-  type          String
+  type          ActivityType
   documentation Documentation[]
+}
+
+enum ActivityType {
+  internal
+  external
+  learning
+  project
 }
 
 model Documentation {
