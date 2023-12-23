@@ -19,25 +19,25 @@ npx prisma init --datasource-provider mysql
 
 ## How to run
 
-0. Seed the database
-
-```bash
-npx prisma db seed
-```
-
-1. Make sure the database is up to date
-
-```bash
-npx prisma db push
-```
-
-2. Install dependencies
+1. Install dependencies
 
 ```bash
 npm install
 ```
 
-3. Run the server
+2. Make sure the database is up to date to the schema
+
+```bash
+npx prisma db push
+```
+
+3. Seed the database (optional)
+
+```bash
+npx prisma db seed
+```
+
+4. Run the server
 
 ```bash
 npm run dev
