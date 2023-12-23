@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Activity {
+  id            Int      @id @default(autoincrement())
+  thumbnail     String
+  title         String
+  date          DateTime
+  caption       String
+  description   String
+  type          ActivityType
+  documentation Documentation[]
+}
+
+enum ActivityType {
+  internal
+  external
+  learning
+  project
+}
+
+model Documentation {
+  id            Int      @id @default(autoincrement())
+  title         String
+  url           String
+  activityId    Int
+  activity      Activity @relation(fields: [activityId], references: [id], onDelete: Cascade, map: "Documentation_activityId_fkey")
+
+  @@index([activityId], map: "Documentation_activityId_fkey")
+}
