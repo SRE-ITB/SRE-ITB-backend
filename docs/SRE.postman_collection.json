@@ -49,7 +49,20 @@
 			"name": "Get Activity by Type",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/activity/type/activity",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"activity",
+						"type",
+						"activity"
+					]
+				}
 			},
 			"response": []
 		},
@@ -60,7 +73,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"thumbnail\": \"https://example.com/image.jpg\",\r\n  \"title\": \"New Activity\",\r\n  \"date\": \"2022-01-01\",\r\n  \"caption\": \"A caption for the activity\",\r\n  \"description\": \"Description of the activity\",\r\n  \"type\": \"Type of the activity\",\r\n  \"documentation\": [\r\n    {\r\n      \"title\": \"Documentation 1\",\r\n      \"url\": \"https://example.com/documentation1.pdf\"\r\n    },\r\n    {\r\n      \"title\": \"Documentation 2\",\r\n      \"url\": \"https://example.com/documentation2.pdf\"\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n  \"thumbnail\": \"https://example.com/image.jpg\",\r\n  \"title\": \"New Activity\",\r\n  \"date\": \"2022-01-01T00:00:00.000Z\",\r\n  \"caption\": \"A caption for the activity\",\r\n  \"description\": \"Description of the activity\",\r\n  \"type\": \"Type of the activity\",\r\n  \"documentation\": [\r\n    {\r\n      \"title\": \"Documentation 1\",\r\n      \"url\": \"https://example.com/documentation1.pdf\"\r\n    },\r\n    {\r\n      \"title\": \"Documentation 2\",\r\n      \"url\": \"https://example.com/documentation2.pdf\"\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
