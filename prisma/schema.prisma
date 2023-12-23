@@ -8,9 +8,9 @@ datasource db {
 }
 
 model Activity {
-  id            Int             @id @default(autoincrement())
+  id            Int      @id @default(autoincrement())
   thumbnail     String
-  title          String
+  title         String
   date          DateTime
   caption       String
   description   String
@@ -19,11 +19,11 @@ model Activity {
 }
 
 model Documentation {
-  id         Int      @id @default(autoincrement())
-  title       String
-  url        String
-  activityId Int
-  activity   Activity @relation(fields: [activityId], references: [id], onDelete: Cascade, map: "Documentation_activityId_fkey")
+  id            Int      @id @default(autoincrement())
+  title         String
+  url           String
+  activityId    Int
+  activity      Activity @relation(fields: [activityId], references: [id], onDelete: Cascade, map: "Documentation_activityId_fkey")
 
   @@index([activityId], map: "Documentation_activityId_fkey")
 }
