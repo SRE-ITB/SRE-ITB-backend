@@ -154,6 +154,15 @@ activityRoutes.patch(
           data: errors.array()
         })
       }
+
+      if (!Object.values(ActivityType).includes(req.body.type)) {
+        return res.status(400).json({
+          message:
+            "Activity type must be either: internal, external, learning, project",
+          data: null
+        })
+      }
+
       const activity = await activityService.updateActivity(
         Number(req.params.id),
         req.body
