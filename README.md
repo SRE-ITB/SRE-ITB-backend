@@ -1,5 +1,10 @@
 # SRE-ITB-backend
 
+## Class Diagram
+<p align="center">
+  <img src="docs/class_diagram.jpg" width="70%" height="auto">
+</p>
+
 ## Project Setup (Skip this because it's already done)
 
 1. Initialize Project and Install Dependencies
