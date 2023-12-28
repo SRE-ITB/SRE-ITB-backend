@@ -85,8 +85,7 @@ activityRoutes.post(
     body("date").isString().notEmpty(),
     body("caption").isString().notEmpty(),
     body("description").isString().notEmpty(),
-    body("type").isString().notEmpty(),
-    body("documentation").isArray().notEmpty()
+    body("type").isString().notEmpty()
   ],
   async (req: Request, res: Response) => {
     try {
@@ -105,29 +104,14 @@ activityRoutes.post(
           data: null
         })
       }
-
-      const { documentation, ...activityData } = req.body
-      const activity = await activityService.createActivity(activityData)
-
-      try {
-        const documentationRecords = await activityService.createDocumentation(
-          documentation,
-          activity?.id
-        )
-        res.status(201).json({
-          message: "Success",
-          data: { activity, documentation: documentationRecords }
-        })
-      } catch (error: any) {
-        await activityService.deleteActivity(activity.id)
-        res.status(500).json({
-          message: `Failed to create documentation: ${error.message}`,
-          data: null
-        })
-      }
+      const activity = await activityService.createActivity(req.body)
+      res.status(201).json({
+        message: "Success",
+        data: activity
+      })
     } catch (error: any) {
       res.status(500).json({
-        message: `Failed to create activity: ${error.message}`,
+        message: "Error",
         data: null
       })
     }

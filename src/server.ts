@@ -3,6 +3,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 
 import { activityRoutes } from "./activity/activity.routes"
+import { documentationRoutes } from "./documentation/documentation.routes"
 import { apiKeyMiddleware } from "./middlewares/apikeyMiddleware"
 
 dotenv.config()
@@ -14,6 +15,7 @@ app.use(cors())
 app.use(express.json())
 app.use(apiKeyMiddleware)
 app.use("/api/activity", activityRoutes)
+app.use("/api/documentation", documentationRoutes)
 
 app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running on port ${PORT}`)
