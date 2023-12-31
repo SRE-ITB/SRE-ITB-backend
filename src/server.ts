@@ -12,6 +12,7 @@ const app = express()
 const PORT: number = parseInt(process.env.PORT as string, 10) || 3000
 
 app.use(cors())
+app.use(express.static("static"))
 app.use(express.json())
 app.use(apiKeyMiddleware)
 app.use("/api/activity", activityRoutes)

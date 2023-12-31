@@ -2,10 +2,12 @@ import { db } from "../utils/db.server"
 import { Activity, ActivityType } from "@prisma/client"
 
 export const getAllActivities = async (
-  sort: string | null
+  sort: string | null,
+  limit: number
 ): Promise<Activity[]> => {
   return await db.activity.findMany({
-    orderBy: sort ? { date: sort === "asc" ? "asc" : "desc" } : undefined
+    orderBy: sort ? { date: sort === "asc" ? "asc" : "desc" } : undefined,
+    take: limit
   })
 }
 
@@ -19,13 +21,15 @@ export const getActivityById = async (id: number): Promise<Activity | null> => {
 
 export const getActivityByType = async (
   type: ActivityType,
-  sort: string | null
+  sort: string | null,
+  limit: number
 ): Promise<Activity[]> => {
   return await db.activity.findMany({
     where: {
       type
     },
-    orderBy: sort ? { date: sort === "asc" ? "asc" : "desc" } : undefined
+    orderBy: sort ? { date: sort === "asc" ? "asc" : "desc" } : undefined,
+    take: limit
   })
 }
 
