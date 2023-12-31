@@ -4,7 +4,8 @@ import { ActivityType } from "@prisma/client"
 async function main() {
   const activity1 = await db.activity.create({
     data: {
-      thumbnail: "https://example.com/thumbnail.jpg",
+      thumbnail:
+        "https://drive.google.com/uc?export=view&id=1A0-eko_JOg05wLW8EWHGdhitn7yVJKEm",
       title: "Internal Program",
       date: new Date(2024, 0, 1),
       caption: "This is the internal program caption",
@@ -28,7 +29,8 @@ async function main() {
 
   const activity2 = await db.activity.create({
     data: {
-      thumbnail: "https://example.com/thumbnail2.jpg",
+      thumbnail:
+        "https://drive.google.com/uc?export=view&id=1u0c6qzdcb-__UHjwK7HqB_v5x0HiD4Ma",
       title: "External Program",
       date: new Date(2024, 0, 2),
       caption: "This is the external program caption",
@@ -52,7 +54,8 @@ async function main() {
 
   const activity3 = await db.activity.create({
     data: {
-      thumbnail: "https://example.com/thumbnail3.jpg",
+      thumbnail:
+        "https://drive.google.com/uc?export=view&id=1QfvrINL2ODJRlye1XFyT_ZMNG7DXuwcO",
       title: "Learning Program",
       date: new Date(2024, 0, 3),
       caption: "This is the Learning program caption",
@@ -76,7 +79,8 @@ async function main() {
 
   const activity4 = await db.activity.create({
     data: {
-      thumbnail: "https://example.com/thumbnail4.jpg",
+      thumbnail:
+        "https://drive.google.com/uc?export=view&id=16WhNbkh-rvfh2_CrKZKarB5ppsSihQ9c",
       title: "Project Program",
       date: new Date(2024, 0, 4),
       caption: "This is the Project program caption",
