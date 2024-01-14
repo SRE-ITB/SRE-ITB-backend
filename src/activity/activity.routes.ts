@@ -1,6 +1,5 @@
 import express from "express"
 import type { Request, Response } from "express"
-import { body, validationResult } from "express-validator"
 import multer from "multer"
 import * as activityService from "./activity.service"
 import { ActivityType } from "@prisma/client"
