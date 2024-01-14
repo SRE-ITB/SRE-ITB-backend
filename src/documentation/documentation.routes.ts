@@ -37,7 +37,6 @@ documentationRoutes.post(
           data: null
         })
       }
-      console.log("files", files)
       const activityId = Number(req.params.activityId)
       const documentationFiles = files as Express.Multer.File[]
       documentationFiles.forEach(async (file) => {
@@ -47,6 +46,10 @@ documentationRoutes.post(
           url: uploadedFile,
           activityId
         })
+      })
+      res.status(200).json({
+        message: "Success",
+        data: null
       })
     } catch (error: any) {
       res.status(500).json({
