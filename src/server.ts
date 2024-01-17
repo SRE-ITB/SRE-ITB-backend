@@ -5,7 +5,7 @@ import swaggerRoutes from "./swagger"
 
 import { activityRoutes } from "./activity/activity.routes"
 import { documentationRoutes } from "./documentation/documentation.routes"
-import { apiKeyMiddleware } from "./middlewares/apikeyMiddleware"
+import { apiKeyMiddleware } from "./middlewares/apiKeyMiddleware"
 
 dotenv.config()
 
