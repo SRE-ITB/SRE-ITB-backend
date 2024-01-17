@@ -20,6 +20,7 @@ activityRoutes.get("/", async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(500).json({
       message: "Error",
+      error: error.message,
       data: null
     })
   }
